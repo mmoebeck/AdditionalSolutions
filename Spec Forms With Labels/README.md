@@ -41,6 +41,7 @@ A directive that allows for masking input for variable specs. The key difference
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - mask: Required property. Specify the mask signature. Ex: 999-***-aaa
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
@@ -55,6 +56,7 @@ A directive that enforces case specified for variable specs.
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - case: Required property. Specify the case to enforce. Options: 'upper', 'lower'
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
@@ -67,6 +69,7 @@ A directive for generic text input. When the variable spec property contains mul
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
@@ -81,6 +84,7 @@ A directive for select lists. The result is a dropdown control that contains all
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
@@ -94,6 +98,7 @@ A directive to the HTML5 File Upload control with Variable Specs. This directive
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
 - Example usage
   - ``` <ocfilefield customfield='Variant.Specs.Photo' label='Custom'></ocfilefield>```
 - *Alternative Method in Storefront*
@@ -105,6 +110,7 @@ A directive to provide a calendar control for date selection. The spec must be a
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
   - format: The format for displayed dates. Defaults to 'MM/dd/yyyy'
@@ -119,6 +125,7 @@ A directive to utilize the Angular Bootstrap [http://angular-ui.github.io/bootst
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
@@ -132,6 +139,7 @@ A directive to expose a checkbox control and apply the defined value to the Spec
 
 - Properties
   - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
   - checked: The value assigned to the spec when the control state is checked
   - unchecked: The value assigned to the spec when the control state is not checked
   
