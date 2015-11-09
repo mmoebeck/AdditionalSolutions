@@ -45,7 +45,7 @@ A directive that allows for masking input for variable specs. The key difference
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
-  - ``` <ocmaskfield customfield='Variant.Specs.Phone' mask='999.999.9999 x999'></ocmaskfield>```
+  - ``` <ocmaskfield customfield='Variant.Specs.Phone' label='Custom' mask='999.999.9999 x999'></ocmaskfield>```
 - Notes
   - The plugin is an angular implementation of the Masked Input plugin for jQuery @ http://digitalbush.com/projects/masked-input-plugin/#license
   
@@ -59,7 +59,7 @@ A directive that enforces case specified for variable specs.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
-  - ``` <occasefield customfield='Variant.Specs.Name' case='upper'></occasefield>```
+  - ``` <occasefield customfield='Variant.Specs.Name' label='Custom' case='upper'></occasefield>```
 
 ## octextfield
 
@@ -70,7 +70,7 @@ A directive for generic text input. When the variable spec property contains mul
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
-  - ``` <octextfield customfield='Variant.Specs.SpecName'></octextfield>``` 
+  - ``` <octextfield customfield='Variant.Specs.SpecName' label='Custom'></octextfield>``` 
 - *Alternative Method in Storefront*
   - ``` <customtextfield customfield='Variant.Specs.SpecName'></customtextfield>``` 
 
@@ -84,7 +84,7 @@ A directive for select lists. The result is a dropdown control that contains all
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
-  - ``` <ocselectionfield customfield='Variant.Specs.Options'></ocselectionfield>```
+  - ``` <ocselectionfield customfield='Variant.Specs.Options' label='Custom'></ocselectionfield>```
 - *Alternative Method in Storefront*
   - ``` <customselectionfield customfield='Variant.Specs.SpecName'></customselectionfield>``` 
 
@@ -95,7 +95,7 @@ A directive to the HTML5 File Upload control with Variable Specs. This directive
 - Properties
   - customfield: Required property. Specify the variable spec
 - Example usage
-  - ``` <ocfilefield customfield='Variant.Specs.Photo'></ocfilefield>```
+  - ``` <ocfilefield customfield='Variant.Specs.Photo' label='Custom'></ocfilefield>```
 - *Alternative Method in Storefront*
   - ``` <customfilefield customfield='Variant.Specs.SpecName'></customfilefield>``` 
 
@@ -109,7 +109,7 @@ A directive to provide a calendar control for date selection. The spec must be a
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
   - format: The format for displayed dates. Defaults to 'MM/dd/yyyy'
 - Example usage
-  - ``` <ocdatefield customfield='Variant.Specs.StartDate' format='dd-MM-yyyy'></ocdatefield>```
+  - ``` <ocdatefield customfield='Variant.Specs.StartDate' label='Custom' format='dd-MM-yyyy'></ocdatefield>```
 - *Alternative Method in Storefront*
   - ``` <customdatefield customfield='Variant.Specs.SpecName'></customdatefield>``` 
 
@@ -122,7 +122,7 @@ A directive to utilize the Angular Bootstrap [http://angular-ui.github.io/bootst
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
-  - ``` <octimefield customfield='Variant.Specs.StartTime'></octimefield>```
+  - ``` <octimefield customfield='Variant.Specs.StartTime' label='Custom'></octimefield>```
 - *Alternative Method in Storefront*
   - ``` <customtimefield customfield='Variant.Specs.SpecName'></customtimefield>``` 
 
@@ -136,7 +136,7 @@ A directive to expose a checkbox control and apply the defined value to the Spec
   - unchecked: The value assigned to the spec when the control state is not checked
   
 - Example usage
-  - ``` <occheckboxfield customfield='Variant.Specs.Approved' checked='Yes' unchecked='No'></occheckboxfield>```
+  - ``` <occheckboxfield customfield='Variant.Specs.Approved' label='Custom' checked='Yes' unchecked='No'></occheckboxfield>```
 - *Alternative Method in Storefront*
   - ``` <customcheckboxfield customfield='Variant.Specs.SpecName' checked='unchecked'></customcheckboxfield>``` 
 
