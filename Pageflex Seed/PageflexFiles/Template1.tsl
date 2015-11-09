@@ -1,0 +1,292 @@
+tsl_version 12;
+
+color "Black"
+    cmyk "0.000%, 0.000%, 0.000%, 100.000%";
+    color_type process;
+end
+
+color "White"
+    cmyk "0.000%, 0.000%, 0.000%, 0.000%";
+    color_type process;
+end
+
+color "Red"
+    cmyk "0.000%, 100.000%, 100.000%, 0.000%";
+    color_type process;
+end
+
+color "Green"
+    cmyk "100.000%, 0.000%, 100.000%, 0.000%";
+    color_type process;
+end
+
+color "Blue"
+    cmyk "100.000%, 100.000%, 0.000%, 0.000%";
+    color_type process;
+end
+
+color "Yellow"
+    cmyk "0.000%, 0.000%, 100.000%, 0.000%";
+    color_type process;
+end
+
+color "Brown"
+    cmyk "0.000%, 0.000%, 25.000%, 75.000%";
+    color_type process;
+end
+
+color "Gray"
+    cmyk "0.000%, 0.000%, 0.000%, 50.000%";
+    color_type process;
+end
+
+color "Orange"
+    cmyk "0.000%, 50.000%, 100.000%, 0.000%";
+    color_type process;
+end
+
+color "Purple"
+    cmyk "0.000%, 100.000%, 0.000%, 0.000%";
+    color_type process;
+end
+model PF_Designer_Doc : _document
+   initial_content "<Master_A></Master_A>";
+   language_id "english";
+end
+
+model PF_Box_Base : _box
+   min_width "0.030000in";
+   max_width "11.000000in";
+   min_height "0.030000in";
+   max_height "17.000000in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+end
+
+model PF_TextBox_Base : PF_Box_Base
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+   runaround "false";
+end
+
+model PF_Area_Template_Base : PF_Box_Base
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   clip_content "true";
+end
+
+model PF_Area_Template_Box : PF_Box_Base
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   clip_content "true";
+end
+
+model PF_Circle_Base : _circle
+   min_width "0.250000in";
+   max_width "11.000000in";
+   min_height "0.250000in";
+   max_height "17.000000in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+end
+
+model PF_TextCircle_Base : PF_Circle_Base
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+end
+
+model PF_Area_Template_Circle : PF_Circle_Base
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   clip_content "true";
+end
+
+model PF_Polygon : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+end
+
+model PF_Area_Template_Polygon : PF_Polygon
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   clip_content "true";
+end
+
+model PF_Area_Template_Bezier : PF_Polygon
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   clip_content "true";
+end
+
+model PF_Text_Polygon : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_color "Black";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+   runaround "false";
+end
+
+model PF_Line_Base : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+   border_simple_placement "centered";
+   border_dash_gap "0.000000pt";
+end
+
+model PF_Bezier_Shape : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+end
+
+model PF_Bezier_Line : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_name "_simple_border";
+   border_simple_thickness "1.000000pt";
+   border_color "Black";
+end
+
+model PF_Bezier_Line_Text : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+   runaround "false";
+   content_goes "edge";
+   copyfitting_max_horizontal_gap "2.000000pt";
+end
+
+model PF_Text_Bezier : _figure
+   contour "move 0in 0in, line 0.25in 0in";
+   border_color "Black";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+   runaround "false";
+end
+
+model PF_Image_Base : _image
+   border_simple_placement "inside";
+   border_color "Black";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   height "1.000000scale";
+   width "1.000000scale";
+   avoid_me "false";
+   use_clipping_path "true";
+   use_runaround_path "true";
+   bumper "0";
+   recurrence_weight "100";
+   recurrence_scope "job";
+end
+
+model PF_TextFrame_Base : _text_frame
+   num_columns "1";
+   gutter_width "0.000000in";
+   min_width "0.030000in";
+   max_width "11.000000in";
+   min_height "0.030000in";
+   max_height "17.000000in";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   top_margin "0.000000in";
+   left_margin "0.000000in";
+   bottom_margin "0.000000in";
+   right_margin "0.000000in";
+   runaround "false";
+   column_balancing_tolerance "3.000000pt";
+end
+
+model PF_HBox_Base : _hbox
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   min_width "0.250000in";
+   min_height "0.250000in";
+   max_width "11.000000in";
+   max_height "17.000000in";
+   clip_content "true";
+end
+
+model PF_VBox_Base : _vbox
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   min_width "0.250000in";
+   min_height "0.250000in";
+   max_width "11.000000in";
+   max_height "17.000000in";
+   clip_content "true";
+end
+
+model PF_Char_Base : _char
+end
+
+model PF_Para_Base : _para
+   language_id "english";
+   font_name "/Arial";
+   font_size "12.000000pt";
+   text_color "Black";
+   tab_default_interval "127000";
+end
+
+model PF_Paragroup_Base : _paragroup
+end
+
+model PF_Page_Base : _page
+   width "889000";
+   height "508000";
+   left_margin "0";
+   right_margin "0";
+   top_margin "0";
+   bottom_margin "0";
+   grid_columns "width=889000";
+   grid_rows "height=508000";
+   border_color "Black";
+   border_name "_none";
+   border_simple_thickness "0.000000pt";
+   fill_name "_none";
+   substrate_color "_white";
+   master_ui_prefix "";
+   master_ui_name "No_Master";
+   master_partner "PF_Page_Base";
+   master_handedness "single";
+end
+
+model Master_A : PF_Page_Base
+   master_ui_prefix "A";
+   master_ui_name "Master_A";
+   master_partner "Master_A";
+   master_handedness "single";
+end
+
+settings 
+ default_para_model "PF_Para_Base"; default_font_name "/Arial";end 
+
+/* Pageflex Creation Data */
+/* Created by: Pageflex Studio */
+/* AppVersion 10.1132.15.0 */
+/* EngineVersion 6.5.2.0 */
