@@ -77,6 +77,17 @@ A directive for generic text input. When the variable spec property contains mul
 - *Alternative Method in Storefront*
   - ``` <customtextfield customfield='Variant.Specs.SpecName'></customtextfield>``` 
 
+## ocemailfield
+
+A directive for generic email input. If the field has a mask value, such as for Custom Order Fields and Custom User Fields, the value will include the mask characters. 
+
+- Properties
+  - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
+  - hideprefix: Boolean value. If set to "true" prefix text will be hidden
+  - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
+- Example usage
+  - ``` <ocemailfield customfield='Variant.Specs.SpecName' label='Custom'></ocemailfield>```
 
 ## ocselectionfield
 

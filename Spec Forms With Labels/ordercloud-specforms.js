@@ -5,6 +5,7 @@ angular.module('OrderCloud-SpecForms')
     .directive('mask', ocmask)
     .directive('occasefield', occasefield)
     .directive('octextfield', octextfield)
+    .directive('ocemailfield', ocemailfield)
     .directive('ocselectionfield', ocselectionfield)
     .directive('ocfilefield', ocfilefield)
     .directive('ocdatefield', ocdatefield)
@@ -125,6 +126,37 @@ function octextfield() {
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<textarea class="form-control"  ng-attr-placeholder="{{label || customfield.Label || customfield.Name}}" cols="{{customfield.Width * .13}}" rows="{{customfield.Lines}}" ng-maxlength="{{customfield.MaxLength}}" ng-required="{{customfield.Required}}" ng-model="customfield.Value"></textarea>',
+            '<span class="input-group-addon" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix) == \'\')">{{customfield.Suffix}}</span>',
+            '</div>',
+            '</div>',
+            '</div>'
+        ].join('');
+    }
+}
+
+function ocemailfield() {
+    var directive = {
+        scope: {
+            customfield : '=',
+            changed: '=',
+            label: '@',
+            hidesuffix: '@',
+            hideprefix: '@'
+        },
+        restrict: 'E',
+        transclude: true,
+        template: template
+    };
+    return directive;
+
+    function template() {
+        return [
+            '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
+            '<div ng-if="customfield.Lines <= 1">',
+            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
+            '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
+            '<input class="form-control" placeholder="{{label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" mask="{{customfield.MaskedInput}}" type="email" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
             '<span class="input-group-addon" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix) == \'\')">{{customfield.Suffix}}</span>',
             '</div>',
             '</div>',
