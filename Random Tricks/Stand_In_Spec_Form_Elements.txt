@@ -1,0 +1,36 @@
+Required Select Element
+<div class="row">
+	<div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+    	<div class="view-form-icon">
+		    <div>
+		        <label class="required">{{('Custom' | r) + ' '  + ('Select' | r) | xlat}}</label>
+		        <div>
+		            <select class="form-control" ng-change="SOMEFUNCTION()" ng-model="MODELNAME" ng-options="VAL for VAL in ARRAY" required>
+		                <option value="" class=""></option>
+		            </select>
+		        </div>
+		        <i class="fa fa-edit"></i>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+Required Text Input
+<div class="row">
+	<div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+    	<div class="view-form-icon">
+		    <div>
+		        <label class="required">{{('Custom' | r) + ' '  + ('Text' | r) | xlat}}</label>
+		        <div>
+		            <input class="form-control" type='text' ng-model="MODELNAME" required></input>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+Button
+<button class="btn btn-default" redirect="product/{{LineItem.Product.InteropID}}">
+    {{('View' | r) + ' ' + ('Product' | r) | xlat}}
+</button>

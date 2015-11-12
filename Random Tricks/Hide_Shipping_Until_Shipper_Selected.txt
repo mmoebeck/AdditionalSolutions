@@ -1,0 +1,28 @@
+The idea is to hide the shipping and the total until a shipper has been selected.
+
+Create, or edit a file override for: 
+partials/controls/orderSummary.html 
+
+replace: 
+<p ng-if="!(user.Permissions.contains('HidePricing'))"> 
+<span class="text-info">{{('Shipping' | r) + ' ' + ('Costs' | r) | xlat}}</span> 
+<span class="pull-right">{{currentOrder.ShippingCost | culturecurrency}}</span> 
+</p> 
+
+with: 
+<p ng-if="!(user.Permissions.contains('HidePricing'))" ng-show="currentOrder.ShipperID"> 
+<span class="text-info">{{('Shipping' | r) + ' ' + ('Costs' | r) | xlat}}</span> 
+<span class="pull-right">{{currentOrder.ShippingCost | culturecurrency}}</span> 
+</p> 
+
+and replace: 
+<h4 ng-if="!(user.Permissions.contains('HidePricing'))"> 
+<strong>{{'Total' | r | xlat}}</strong> 
+<span class="text-success pull-right"><strong>{{currentOrder.Total | culturecurrency}}</strong></span> 
+</h4> 
+
+with: 
+<h4 ng-if="!(user.Permissions.contains('HidePricing'))" ng-show="currentOrder.ShipperID"> 
+<strong>{{'Total' | r | xlat}}</strong> 
+<span class="text-success pull-right"><strong>{{currentOrder.Total | culturecurrency}}</strong></span> 
+</h4> 

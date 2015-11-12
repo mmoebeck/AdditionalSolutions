@@ -1,0 +1,28 @@
+Create and save a file override for:
+js/filters.js
+partials/controls/orderShipping.html
+
+Add to js/filters.js file Override:
+
+four51.app.filter('shipperFilter', function() {
+    return function(shipper) {
+        var results = [];
+        angular.forEach(shipper, function(s) {
+        	//Modify values to suite your needs
+            if (s.Name.indexOf('Ground') != -1 || s.Name.indexOf('USPS') != -1) {
+                results.push(s);
+            }
+        });
+
+        return results;
+    }
+});
+
+
+Update partials/controls/orderShipping.html to use filter on the shipper options
+
+Change:
+ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers"
+
+To:
+ng-options="shipper.Name as (shipper.Name + ' ' + (shipper.ShippingRate.Price | currency | xlat)) for shipper in shippers | shipperFilter"
