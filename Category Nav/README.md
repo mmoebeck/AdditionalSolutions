@@ -40,3 +40,23 @@ For example you may add it into the index.html file like this:
     <categorynav tree="tree"></categorynav>
 </section>
 ```
+
+###4. Add the Nav Category Nav directive
+
+ 1. In Code Editor, locate your **`partials/controls/nav.html`** file, hit edit.
+ 2. Add **'<navcategorynav tree="tree"></navcategorynav>'** into the file. Save
+
+For example you may add it into the nav.html file like this:
+
+```html
+<navcategorynav tree="tree"></navcategorynav>
+<ul class="nav navbar-nav pull-right">
+    <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
+        <a id="451qa_cart_link" ng-show="(cartCount && cartCount > 0) && user.CurrentOrderID" class="cart" href="cart">
+            <span ng-bind="cartCount" class="badge"></span>
+            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-caret-down"></i>
+        </a>
+    </li>
+</ul>
+```
