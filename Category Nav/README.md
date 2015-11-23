@@ -41,10 +41,10 @@ For example you may add it into the index.html file like this:
 </section>
 ```
 
-###4. Add the Nav Category Nav directive
+###4. (Optional) Add the Nav Category Nav directive
 
  1. In Code Editor, locate your **`partials/controls/nav.html`** file, hit edit.
- 2. Add **'<navcategorynav tree="tree"></navcategorynav>'** into the file. Save
+ 2. Add **'navcategorynav'** into the file as shown in the example. Save
 
 For example you may add it into the nav.html file like this:
 
