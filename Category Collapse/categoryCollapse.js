@@ -42,12 +42,12 @@ function categorycollapse() {
     function template() {
         return [
             '<ul>',
-                '<li class="451_cat_item" ng-repeat="node in tree" ng-class="{\'active\': isInPath(node.Name)}">',
+                '<li class="451_cat_item" ng-repeat="node in tree" ng-class="{\'active\': isInPath(node.InteropID)}">',
                     '<a ng-href="catalog/{{node.InteropID}}" ng-bind-html="node.Name"></a>',
-                    '<ul ng-if="node.SubCategories" ng-show="isInPath(node.Name) || subInPath(node.ShowCat)">',
+                    '<ul ng-if="node.SubCategories" ng-show="isInPath(node.InteropID) || subInPath(node.ShowCat)">',
                         '<li class="451_cat_item" ng-repeat="subCat in node.SubCategories">',
                             '<a ng-class="{\'active\': subInPath(node.ShowCat)}" ng-href="catalog/{{subCat.InteropID}}" ng-bind-html="subCat.Name"></a>',
-                            '<ul ng-if="subCat.SubCategories" ng-show="isInPath(subCat.Name) || subInPath(subCat.ShowCat)">',
+                            '<ul ng-if="subCat.SubCategories" ng-show="isInPath(subCat.InteropID) || subInPath(subCat.ShowCat)">',
                                 '<li class="451_cat_item" ng-repeat="subCatTwo in subCat.SubCategories">',
                                     '<a ng-class="{\'active\': subInPath(node.ShowCat)}" ng-href="catalog/{{subCatTwo.InteropID}}" ng-bind-html="subCatTwo.Name"></a>',
                                 '</li>',
