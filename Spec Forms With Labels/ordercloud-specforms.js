@@ -321,11 +321,11 @@ function ocfilefield($parse, $resource, $451, fileReader, Security) {
     var directive = {
         scope: {
             customfield: '=',
+            label: '@',
             replace: '@ngModel'
         },
         restrict: 'E',
         template: template,
-        label: '@',
         replace: true,
         link: OCFileFieldLink
     };
