@@ -61,6 +61,18 @@ A directive that enforces case specified for variable specs.
 - Example usage
   - ``` <occasefield customfield='Variant.Specs.Name' label='Custom' case='upper'></occasefield>```
 
+## octitlefield
+
+A directive that enforces Title Case specified for variable specs.  
+
+- Properties
+  - customfield: Required property. Specify the variable spec
+  - label: Optional property. Specify the label.
+  - hideprefix: Boolean value. If set to "true" prefix text will be hidden
+  - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
+- Example usage
+  - ``` <octitlefield customfield='Variant.Specs.Name' label='Custom'></octitlefield>```
+
 ## octextfield
 
 A directive for generic text input. When the variable spec property contains multiple lines a textarea element is added to the DOM rather than a one line text input control. If the field has a mask value, such as for Custom Order Fields and Custom User Fields, the value will include the mask characters. 

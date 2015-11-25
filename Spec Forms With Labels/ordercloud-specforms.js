@@ -4,6 +4,7 @@ angular.module('OrderCloud-SpecForms')
     .directive('ocmaskfield', ocmaskfield)
     .directive('mask', ocmask)
     .directive('occasefield', occasefield)
+    .directive('octitlefield', octitlefield)
     .directive('octextfield', octextfield)
     .directive('ocemailfield', ocemailfield)
     .directive('ocselectionfield', ocselectionfield)
@@ -74,6 +75,68 @@ function occasefield() {
             scope.$watch('customfield.Value', function(val) {
                 if (!val) return;
                 scope.customfield.Value =  val[scope.case == 'upper' ? 'toUpperCase' : 'toLowerCase']();
+            });
+        }
+    };
+    return directive;
+
+    function template() {
+        return [
+            '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
+            '<div>',
+            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
+            '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
+            '<input class="form-control" placeholder="{{label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" ui-mask="{{customfield.MaskedInput}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
+            '<span class="input-group-addon" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix) == \'\')">{{customfield.Suffix}}</span>',
+            '</div>',
+            '</div>',
+            '</div>'
+        ].join('');
+    }
+}
+
+function octitlefield() {
+    var directive = {
+        scope: {
+            customfield : '=',
+            changed: '=',
+            label: '@',
+            hidesuffix: '@',
+            hideprefix: '@',
+            case: '@'
+        },
+        restrict: 'E',
+        template: template,
+        link: function (scope) {
+            String.prototype.toTitleCase = function() {
+              var i, j, str, lowers, uppers;
+              str = this.replace(/\b[\w-\']+/g, function(txt) {
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+              });
+
+              // Certain minor words should be left lowercase unless 
+              // they are the first or last words in the string
+              lowers = ['A', 'An', 'The', 'And', 'But', 'Or', 'For', 'Nor', 'As', 'At', 
+              'By', 'For', 'From', 'In', 'Into', 'Near', 'Of', 'On', 'Onto', 'To', 'With'];
+              for (i = 0, j = lowers.length; i < j; i++)
+                str = str.replace(new RegExp('\\s' + lowers[i] + '\\s', 'g'), 
+                  function(txt) {
+                    return txt.toLowerCase();
+                  });
+
+              // Certain words such as initialisms or acronyms should be left uppercase
+              uppers = ['Id', 'Tv'];
+              for (i = 0, j = uppers.length; i < j; i++)
+                str = str.replace(new RegExp('\\b' + uppers[i] + '\\b', 'g'), 
+                  uppers[i].toUpperCase());
+
+              return str;
+            }
+
+            scope.$watch('customfield.Value', function(val) {
+                if (!val) return;
+                scope.customfield.Value =  val.toTitleCase();
             });
         }
     };
