@@ -1,0 +1,84 @@
+<script type="text/javascript">
+	function SpecController($scope) {
+		//Update form when it is loaded
+		$scope.$watch('Variant', function(val) {
+			if (!val) return;
+		});
+	}
+</script>
+<div ng-controller="SpecController">
+	<section class="specform-default">
+	    <!-- BREADCRUMB!-->
+	    <productnav editvariant="true" product="Product" variant="Variant" />
+	    <!-- SPEC FORM IMAGE PANEL!-->
+	    <div class="col-md-4">
+	        <!-- SPEC FORM PREVIEW DIRECTIVE -->
+			<specformpreview variant="Variant" product="Product" varianterrors="variantErrors" previewvariant="PreviewVariant"></specformpreview>
+	    </div>
+	    <div class="col-md-7 col-md-offset-1">
+	        <!-- SPEC FORM PANEL! -->
+	        <div class="panel panel-default">
+	            <div class="panel-heading">
+	                <h3 class="panel-title"><span ng-show="Variant.PreviewUrl">{{'Edit' | r | xlat}} </span>{{Variant.ExternalID || 'Create New' | xlat}}</h3>
+	            </div>
+	            <div class="panel-body">
+	                <div id="451_list_vspec" ng-show="true">
+	                    <div class="form-group">
+	                    	<div class="row">
+
+									<!-- START YOUR SPECIFIC VARIABLE SPEC FORM -->
+									<div class="row">
+										<div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+											<customtextfield customfield="Variant.Specs.Name"></customtextfield>
+										</div>
+									</div>
+									<div class="row">
+										<div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+											<customtextfield customfield="Variant.Specs.Title1"></customtextfield>
+										</div>
+									</div>
+									<div class="row">
+										<div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+											<customtextfield customfield="Variant.Specs.Title2"></customtextfield>
+										</div>
+									</div>
+									<!-- END YOUR SPECIFIC VARIABLE SPEC FORM -->
+
+	                    	</div>
+						</div>
+	                </div>
+	            </div>
+
+				 <!-- SPEC FORM PREVIEW SENT PREVIEWVARIANT OR REGULAR VARIANT -->
+				 <div class="panel-footer">
+					<button ng-show="Variant.InteropID" class="btn btn-default pull-left" type="button" ng-click="saveasnew(true,PreviewVariant)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save As New' | r | xlat}}</button>
+	                <button class="btn btn-primary pull-right" type="submit" ng-click="save(true,PreviewVariant)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save' | r | xlat}}</button>
+				</div>
+				
+				<div class="navbar-fixed-bottom">
+					<div class="view-error-message" ng-show="showVariantErrors && variantErrors.length">
+						<ul class="alert-warning">
+							<li class="text-center">
+								<span class="badge">
+									<i class="fa fa-exclamation-circle fa-inverse"></i>
+									{{variantErrors.length}}
+								</span>
+							</li>
+							<li class="text-center">
+								<ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+									<li class="alert-warning" ng-repeat="e in variantErrors">{{e | xlat}}</li>								
+								</ul>
+							</li>
+							<li class="text-center">
+								<a ng-show="variantErrors.length > 1">
+									<i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+									<i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</section>
+</div>
