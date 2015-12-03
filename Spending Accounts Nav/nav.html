@@ -84,9 +84,11 @@
                             </li>
                         </ul>
                     </li>
+                    <!--SPENDING ACCOUNTS NAV-->
                     <li ng-if="userSpendingAccounts" class="spendingaccounts">
                         <span class="hidden-xs">{{userSpendingAccounts[0].Name}}: {{userSpendingAccounts[0].Balance | currency}}</span>
                     </li>
+                    <!--END SPENDING ACCOUNTS NAV-->
                 </ul>
                 <ul class="nav navbar-nav pull-right">
                     <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
