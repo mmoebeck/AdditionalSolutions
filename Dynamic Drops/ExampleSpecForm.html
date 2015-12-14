@@ -29,11 +29,20 @@
                         break;
                 }
             });
+            //set the Title2 options to blank until Title1 has been selected
+            $scope.Variant.Specs.Title2.Options = [""];
         });
         
         //watch for a change to the primary selection spec
         $scope.$watch('Variant.Specs.Title1.Value',function(newVal,oldVal){
-            if(!newVal)return;
+            if(!newVal){
+                if($scope.Variant){
+                    $scope.Variant.Specs.Title2.Options = [""];
+                }
+                else{
+                    return;
+                }
+            }
             
             //check the newVal to determine what optons should appear in the secondary selection spec
             if(newVal == "Colors"){
