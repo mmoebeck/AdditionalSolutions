@@ -1,0 +1,124 @@
+<script type="text/javascript">
+    function SpecController($scope){
+        //placeholders for custom options
+        $scope.colorOptions = [];
+        $scope.numberOptions = [];
+
+        $scope.$watch('Variant',function(val){
+            if(!val)return;
+            //Loop through the existing options and sort into appropriate placeholders
+            angular.forEach($scope.Variant.Specs.Title2.Options,function(option){
+                switch(option.Value){
+                    case "Red":
+                        $scope.colorOptions.push(option);
+                        break;
+                    case "Blue":
+                        $scope.colorOptions.push(option);
+                        break;
+                    case "Green":
+                        $scope.colorOptions.push(option);
+                        break;
+                    case "One":
+                        $scope.numberOptions.push(option);
+                        break;
+                    case "Two":
+                        $scope.numberOptions.push(option);
+                        break;
+                    case "Three":
+                        $scope.numberOptions.push(option);
+                        break;
+                }
+            });
+        });
+        
+        //watch for a change to the primary selection spec
+        $scope.$watch('Variant.Specs.Title1.Value',function(newVal,oldVal){
+            if(!newVal)return;
+            
+            //check the newVal to determine what optons should appear in the secondary selection spec
+            if(newVal == "Colors"){
+                $scope.Variant.Specs.Title2.Options = $scope.colorOptions;
+            }
+            if(newVal == "Numbers"){
+                $scope.Variant.Specs.Title2.Options = $scope.numberOptions;
+            }
+
+            //use this to check for the existance of a variant edit
+            if(oldVal){
+                if(newVal != oldVal){
+                    $scope.Variant.Specs.Title2.Value = "";
+                }
+            }
+        });
+    };
+</script>
+<div ng-controller="SpecController">
+    <section class="specform-default">
+        <!-- BREADCRUMB!-->
+        <productnav editvariant="true" product="Product" variant="Variant" />
+        <!-- SPEC FORM IMAGE PANEL!-->
+        <div class="col-md-4" ng-hide="!Variant.PreviewUrl">
+            <div class="panel panel-default">
+                <loadingindicator ng-show="loadingImage" />
+                <div class="panel-body">
+                    <figure>
+                        <img class="product-image-large img-responsive" ng-src="{{Variant.PreviewUrl}}" imageonload />
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div ng-class="{'col-xs-12': !Variant.PreviewUrl, 'col-md-7 col-md-offset-1': Variant.PreviewUrl }">
+            <!-- SPEC FORM PANEL! -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span ng-show="Variant.PreviewUrl">{{'Edit' | r | xlat}} </span>{{Variant.ExternalID || 'Create New' | xlat}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="451_list_vspec" ng-show="true">
+                        <div class="form-group">
+                            <div class="row">
+                                <div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+                                    <ocselectionfield label="Title 1" customfield="Variant.Specs.Title1"></ocselectionfield>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div ng-class="{'col-md-4': isInPath('new'),'col-md-12': isInPath('edit')}">
+                                    <ocselectionfield label="Title 2" customfield="Variant.Specs.Title2"></ocselectionfield>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="panel-footer">
+                    <button ng-show="Variant.InteropID" class="btn btn-default" type="button" ng-click="saveasnew(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save As New' | r | xlat}}</button>
+                    <button class="btn btn-primary pull-right" type="submit" ng-click="save(true)"><i ng-show="variantErrors.length > 0" class="fa fa-warning"> </i>{{'Save' | r | xlat}}</button>
+                </div>
+                
+                <div class="navbar-fixed-bottom">
+                    <div class="view-error-message" ng-show="showVariantErrors && variantErrors.length">
+                        <ul class="alert-warning">
+                            <li class="text-center">
+                                <span class="badge">
+                                    <i class="fa fa-exclamation-circle fa-inverse"></i>
+                                    {{variantErrors.length}}
+                                </span>
+                            </li>
+                            <li class="text-center">
+                                <ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
+                                    <li class="alert-warning" ng-repeat="e in variantErrors">{{e | xlat}}</li>                              
+                                </ul>
+                            </li>
+                            <li class="text-center">
+                                <a ng-show="variantErrors.length > 1">
+                                    <i class="fa fa-caret-down" ng-click="errorSection = 'open'" ng-hide="errorSection == 'open'"></i>
+                                    <i class="fa fa-caret-up" ng-click="errorSection = ''" ng-show="errorSection == 'open'"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
