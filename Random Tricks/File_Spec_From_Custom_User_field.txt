@@ -1,0 +1,18 @@
+Set up a custom user field configured as a file.
+Assign the custom user field to the appropriate users.
+Upload files to the custom user fields.
+In either the Spec Form for an item or the js/controllers/specFormCtrl.js file override use this bit of code:
+
+$scope.$watch('Variant', function(val) {
+	//end the function if no Variant exists
+	if (!val) return;
+	//loop through user fields and set the desired variable spec file info
+	angular.forEach($scope.user.CustomFields, function(field){
+	    if(field.Label == "CUSTOMFIELDNAME"){
+	        $scope.Variant.Specs.VARIABLEFILESPEC.File = field.File;
+	        $scope.Variant.Specs.VARIABLEFILESPEC.Value = field.File.ID;
+	    }
+	});
+});
+
+It loops through all the available user fields, when it find the CUSTOMFIELDNAME that matches your custom user file field, then it will update the desired VARIABLEFILESPEC with it's required information.
