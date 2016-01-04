@@ -1,6 +1,6 @@
 #Cart View Coupon for OrderCloud 
 
-This is a brief description of the solution.
+This solution creates a directive that can be used to place the coupon redemption function on the cart page.
 
 ##Setup
 
