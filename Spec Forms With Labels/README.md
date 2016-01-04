@@ -55,6 +55,7 @@ A directive that enforces case specified for variable specs.
 - Properties
   - customfield: Required property. Specify the variable spec
   - label: Optional property. Specify the label.
+  - placeholder: Optional property. Specify the placeholder.
   - case: Required property. Specify the case to enforce. Options: 'upper', 'lower'
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
@@ -68,6 +69,7 @@ A directive that enforces Title Case specified for variable specs.
 - Properties
   - customfield: Required property. Specify the variable spec
   - label: Optional property. Specify the label.
+  - placeholder: Optional property. Specify the placeholder.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
@@ -80,6 +82,7 @@ A directive for generic text input. When the variable spec property contains mul
 - Properties
   - customfield: Required property. Specify the variable spec
   - label: Optional property. Specify the label.
+  - placeholder: Optional property. Specify the placeholder.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
@@ -94,6 +97,7 @@ A directive for generic email input. If the field has a mask value, such as for 
 - Properties
   - customfield: Required property. Specify the variable spec
   - label: Optional property. Specify the label.
+  - placeholder: Optional property. Specify the placeholder.
   - hideprefix: Boolean value. If set to "true" prefix text will be hidden
   - hidesuffix: Boolean value. If set to "true" suffix text will be hidden
 - Example usage
