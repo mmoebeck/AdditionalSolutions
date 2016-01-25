@@ -21,7 +21,7 @@ If you are using file overrides, create a new file override named **`js/directiv
 
 ##Usage
 
-###1. Load the module into your application.
+###1. Update the Shipper Name.
 Update "DEFAULTSHIPPERNAME" on lines "138" and "166" to the name of the shipper assigned to your buyer that you wish to use as the default shipper.
 
 
