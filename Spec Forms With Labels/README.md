@@ -180,7 +180,7 @@ A directive to create a ckeditor on the page and bind it to a model.
   - ng-model: This is the value you want to bind to.
 
 - Example usage
-  - ``` 
+  ```html 
   <label>Custom Label</label>
   <textarea octextboxfield ng-model="Variant.Specs.AdditionalInformation.Value"></textarea> 
   ```
