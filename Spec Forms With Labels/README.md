@@ -182,7 +182,7 @@ A directive to create a ckeditor on the page and bind it to a model.
 - Example usage
   ```html 
   <label>Custom Label</label>
-  <textarea octextboxfield ng-model="Variant.Specs.AdditionalInformation.Value"></textarea> 
+  <textarea octextboxfield ng-model="Variant.Specs.SpecName.Value"></textarea> 
   ```
 
 - Important Note: if you are using the octextboxfield, in the index file you need to add an extra script:
