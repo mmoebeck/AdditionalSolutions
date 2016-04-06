@@ -835,7 +835,7 @@ function getDateFromFormat(val,format) {
                 else { year=2000+(year-0); }
             }
         }
-        else if (token=="MMM"||token=="NNN"){
+        else if (token=="MMM"||token=="NNN" || token=="MMMM"||token=="NNNN"){
             month=0;
             for (var i=0; i<MONTH_NAMES.length; i++) {
                 var month_name=MONTH_NAMES[i];
@@ -843,6 +843,11 @@ function getDateFromFormat(val,format) {
                     if (token=="MMM"||(token=="NNN"&&i>11)) {
                         month=i+1;
                         if (month>12) { month -= 12; }
+                        i_val += month_name.length;
+                        break;
+                    }
+                    if (token=="MMMM"||(token=="NNNN"&&i<12)) {
+                        month=i+1;
                         i_val += month_name.length;
                         break;
                     }
