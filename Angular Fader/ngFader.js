@@ -1,11 +1,14 @@
-(function () {
-    'use strict';
-    angular.module('OrderCloud-ngFader', [])
-      .directive('ngFader', function($interval) {
+angular.module('OrderCloud-ngFader', []);
 
-	  function link(scope){
+angular.module('OrderCloud-ngFader')
+    .directive('ngFader', ngFader)
+;
 
-		//Set your interval time. 4000 = 4 seconds
+ngFader.$inject = ['$interval'];
+function ngFader($interval) {
+    link.$inject = ['scope'];
+    function link(scope) {
+        //Set your interval time. 4000 = 4 seconds
 		scope.setTime = 4000;
 
 		//List your images here. 
@@ -87,14 +90,12 @@
         		return "show";
         	}
         };
-        
-
-	}
-
-	  return {
-	    restrict: 'E',
+    };
+    var directive = {
+        restrict: 'E',
 	    scope: false,
-	    template: '<div class="ng-fader">'+
+        link: link,
+        template: '<div class="ng-fader">'+
 	    		//images will render here
 			'<ul>' + 
 				'<li ng-repeat="image in images" ng-click="toggleStartStop()" ng-swipe-right="sliderBack()" ng-swipe-left="sliderForward()"><img data-ng-src="{{image.src}}" data-ng-alt="{{image.alt}}" ng-class="show($index)"/></li>' + 
@@ -122,9 +123,7 @@
 					'</li>' + 
 				'</ul>' + 
 			'</div>' +
-		'</div>',
-		link: link
-	  };
-      });
-
-}());
+		'</div>'
+    };
+    return directive;
+}
