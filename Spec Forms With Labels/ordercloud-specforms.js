@@ -497,6 +497,12 @@ function octimefield($filter) {
         restrict: 'E',
         template: template,
         link: function (scope) {
+            scope.$watch('customfield',function(field){
+                if(!field) return;
+                if(scope.customfield.Value == ""){
+                    scope.customfield.Value = "12:00 PM";   
+                }
+            });
             scope.$watch('customfield.Time', function(newVal) {
                 if (!newVal) return;
                 scope.customfield.Value = $filter('date')(scope.customfield.Time, 'shortTime');
