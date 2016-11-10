@@ -22,6 +22,7 @@ function ocmaskfield() {
             changed: '=',
             hidesuffix: '@',
             hideprefix: '@',
+            hidelabel: '@',
             label: '@',
             mask: '@'
         },
@@ -34,7 +35,7 @@ function ocmaskfield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div ng-if="customfield.Lines <= 1">',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input class="form-control" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" jmask="{{customfield.MaskedInput || mask}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
@@ -68,6 +69,7 @@ function occasefield() {
             placeholder: '@',
             hidesuffix: '@',
             hideprefix: '@',
+            hidelabel: '@',
             case: '@'
         },
         restrict: 'E',
@@ -85,7 +87,7 @@ function occasefield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div>',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input class="form-control" placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" ui-mask="{{customfield.MaskedInput}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
@@ -106,6 +108,7 @@ function octitlefield() {
             placeholder: '@',
             hidesuffix: '@',
             hideprefix: '@',
+            hidelabel: '@',
             case: '@'
         },
         restrict: 'E',
@@ -148,7 +151,7 @@ function octitlefield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div>',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input class="form-control" placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" ui-mask="{{customfield.MaskedInput}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
@@ -166,9 +169,11 @@ function octextfield() {
             customfield : '=',
             changed: '=',
             label: '@',
+            autotrim: '@',
             placeholder: '@',
             hidesuffix: '@',
-            hideprefix: '@'
+            hideprefix: '@',
+            hidelabel: '@'
         },
         restrict: 'E',
         transclude: true,
@@ -180,15 +185,15 @@ function octextfield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div ng-if="customfield.Lines <= 1">',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
-            '<input class="form-control" placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" jmask="{{customfield.MaskedInput}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
+            '<input class="form-control" ng-trim="{{autotrim || true}}" placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" jmask="{{customfield.MaskedInput}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
             '<span class="input-group-addon" ng-if="customfield.Suffix && !hidesuffix && !((customfield.Suffix) == \'\')">{{customfield.Suffix}}</span>',
             '</div>',
             '</div>',
             '<div ng-if="customfield.Lines > 1">',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<textarea class="form-control"  ng-attr-placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" cols="{{customfield.Width * .13}}" rows="{{customfield.Lines}}" ng-maxlength="{{customfield.MaxLength}}" ng-required="{{customfield.Required}}" ng-model="customfield.Value"></textarea>',
@@ -208,7 +213,8 @@ function ocemailfield() {
             label: '@',
             placeholder: '@',
             hidesuffix: '@',
-            hideprefix: '@'
+            hideprefix: '@',
+            hidelabel: '@'
         },
         restrict: 'E',
         transclude: true,
@@ -220,7 +226,7 @@ function ocemailfield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div ng-if="customfield.Lines <= 1">',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input class="form-control" placeholder="{{placeholder || label || customfield.Label || customfield.Name}}" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" jmask="{{customfield.MaskedInput}}" type="email" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
@@ -240,7 +246,8 @@ function ocselectionfield($451) {
             change: '=',
             label: '@',
             hidesuffix: '@',
-            hideprefix: '@'
+            hideprefix: '@',
+            hidelabel: '@'
         },
         restrict: 'E',
         transclude: true,
@@ -253,7 +260,7 @@ function ocselectionfield($451) {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div>',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon"  ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<select class="form-control" ng-init="init()" ng-required="customfield.Required" ng-change="changed()" ng-model="item" ng-options="option.Value for option in customfield.Options" ng-if="customfield.Options">',
@@ -452,7 +459,8 @@ function ocdatefield($filter) {
             label: '@',
             hidesuffix: '@',
             hideprefix: '@',
-            format: '@'
+            format: '@',
+            hidelabel: '@'
         },
         restrict: 'E',
         template: template,
@@ -472,7 +480,7 @@ function ocdatefield($filter) {
     function template() {
         return [
             '<div class="view-form-icon">',
-            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input is-open="fieldopened" datepicker-popup="{{format}}" class="form-control" type="text" ng-required="customfield.Required" ng-model="customfield.Date"/>',
@@ -492,7 +500,8 @@ function octimefield($filter) {
             customfield : '=',
             label: '@',
             hidesuffix: '@',
-            hideprefix: '@'
+            hideprefix: '@',
+            hidelabel: '@'
         },
         restrict: 'E',
         template: template,
@@ -526,7 +535,7 @@ function octimefield($filter) {
     function template() {
         return [
             '<div class="form-group">',
-            '<label class="small" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-show="!hidelabel" class="small" ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<timepicker ng-model="customfield.Time" show-meridian="true"></timepicker>',
