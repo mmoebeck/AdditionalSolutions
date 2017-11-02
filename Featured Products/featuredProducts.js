@@ -17,7 +17,7 @@ function featuredproducts() {
         return [
             '<h3>Featured Products</h3>',
             '<div class="row">',
-                '<div class="col-md-3" ng-repeat="FeaturedProduct in featProducts">',
+                '<div ng-class="bootWidth" ng-repeat="FeaturedProduct in featProducts">',
                     '<div class="well featured-well">',
                         '<div class="451qa_prod_item row">',
                             '<div class="col-xs-12 text-center">',
@@ -47,19 +47,18 @@ FeatProdCtrl.$inject = ['$scope', 'Product'];
 function FeatProdCtrl($scope, Product) {
     //holder for product objects
     $scope.featProducts = [];
-
-    //list of up to 4 featured items.
-    $scope.featuredList = [
-        "PRODUCTAPIINTEROPID1",
-        "PRODUCTAPIINTEROPID2",
-        "PRODUCTAPIINTEROPID3",
-        "PRODUCTAPIINTEROPID4"
-    ];
-
-    //loop through each featured item and use the Product service to return the needed object
-    angular.forEach($scope.featuredList, function(f){
-        Product.get(f, function(data){
-            $scope.featProducts.push(data);
-        });
-    });
+    
+    //return up to 4 items from a category
+    Product.search("CATINTEROPID", null, null, function (products, count) {
+        var widths = {
+        	1:"col-md-12",
+	    	2:"col-md-6",
+	    	3:"col-md-4",
+	    	4:"col-md-2"
+        };
+		angular.forEach(products, function(product){
+			$scope.featProducts.push(product);
+			$scope.bootWidth = widths[count];
+		});
+	}, 1, 4);
 }
