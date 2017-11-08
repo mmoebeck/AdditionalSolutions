@@ -35,7 +35,7 @@ Add a dependency for  **`OrderCloud-FeaturedProducts`** to the Four51.app module
  2. Add the markup below underneath the catelog “section” in the “partials/categoryView.html” file. Save.
 
 ```html
-<div ng-show="isActive('catalog')">
+<div ng-if="isActive('catalog')">
     <featuredproducts></featuredproducts>
 </div>
 ```
