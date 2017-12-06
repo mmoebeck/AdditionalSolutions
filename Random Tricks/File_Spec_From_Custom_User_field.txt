@@ -8,7 +8,7 @@ $scope.$watch('Variant', function(val) {
 	if (!val) return;
 	//loop through user fields and set the desired variable spec file info
 	angular.forEach($scope.user.CustomFields, function(field){
-	    if(field.Label == "CUSTOMFIELDNAME"){
+	    if(field.Name == "CUSTOMFIELDNAME"){
 	        $scope.Variant.Specs.VARIABLEFILESPEC.File = field.File;
 	        $scope.Variant.Specs.VARIABLEFILESPEC.Value = field.File.ID;
 	    }
