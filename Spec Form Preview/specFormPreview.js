@@ -93,6 +93,23 @@ function SpecFormPreviewCtrl($scope, Variant) {
     });
     
     $scope.previewOnly = function(variant,hideErrorWindowAlert,varianterrors){
-        previewVariant(variant, false, hideErrorWindowAlert,varianterrors);
+        if($scope.previewvariant && $scope.previewvariant.InteropID){
+            var d = {
+                "ProductInteropID": $scope.Product.InteropID,
+                "InteropID": $scope.previewvariant.InteropID
+            };
+            Variant.delete(d,
+                function() {
+                    previewVariant(variant, false, hideErrorWindowAlert,varianterrors);
+                },
+                function(ex) {
+                    $scope.showAddToCartErrors = true;
+                }
+            );
+        }
+        else{
+            previewVariant(variant, false, hideErrorWindowAlert,varianterrors);
+        }
+        
     }
 }
