@@ -580,7 +580,10 @@ function octextboxfield() {
                 removeButtons: 'Source,NumberedList,BulletedList,Outdent,Indent,Link,Unlink,Anchor'
                 /* remove or add any custom buttons as needed here */
             });
-
+            
+            CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+            CKEDITOR.config.shiftEnterMode = CKEDITOR.ENTER_BR;
+            
             /* Take no additional action if there is no ngModel value on the element */
             if(!ngModel) return;
 
@@ -590,7 +593,15 @@ function octextboxfield() {
                     ngModel.$setViewValue(ck.getData());
                 });
             });
-
+            
+            ck.on('change', function () {
+                ngModel.$setViewValue(ck.getData());
+            });
+            
+            ck.on('instanceReady', function() {
+                ck.setData(ngModel.$viewValue);
+            });
+            
             /* When the text is changed the ng-model value is updated */
             ngModel.$render = function() {
                 ck.setData(ngModel.$viewValue);
