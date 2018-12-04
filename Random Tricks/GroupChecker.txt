@@ -1,0 +1,12 @@
+//set a default value for the ng-show variable(s) to false
+$scope.Blah = false;
+
+//Check for the existance of group then loop through the groups.
+if($scope.user.Groups){
+	angular.forEach($scope.user.Groups, function(group){
+		//if the group name is found, then set the appropriate ng-show variable to true
+		if(group.Name == "BLAH"){
+			$scope.Blah = true;
+		}
+	});
+}
