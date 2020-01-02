@@ -95,7 +95,7 @@ function SpecFormPreviewCtrl($scope, Variant) {
     $scope.previewOnly = function(variant,hideErrorWindowAlert,varianterrors){
         if($scope.previewvariant && $scope.previewvariant.InteropID){
             var d = {
-                "ProductInteropID": $scope.Product.InteropID,
+                "ProductInteropID": $scope.product.InteropID,
                 "InteropID": $scope.previewvariant.InteropID
             };
             Variant.delete(d,
